@@ -2,8 +2,11 @@ import { Colors } from "./config/constants/Colors";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,jsx,ts,tsx}", './components/**/*.{js,ts,tsx}'],
-  presets: [require('nativewind/preset')],
+  content: [
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./presentation/**/*.{js,jsx,ts,tsx}",
+  ],
+  presets: [require("nativewind/preset")],
   theme: {
     extend: {
       colors: {
@@ -42,5 +45,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
-
+};
