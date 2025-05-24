@@ -11,15 +11,15 @@ import { ProgressBar } from "react-native-paper";
 import { Header } from "@/presentation/shared/components";
 import { ThemedView } from "@/presentation/theme/components";
 
+import { Calc } from "@/config/helpers";
+
 export default function HomeScreen() {
   const [syncing, setSyncing] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [steps, setSteps] = useState(getRandomSteps());
+  const [steps, setSteps] = useState(Calc.getRandomNumber(0, 10000));
 
   
-  function getRandomSteps() {
-    return Math.floor(Math.random() * (9000 - 7000 + 1)) + 7000;
-  }
+
 
   const handleSync = () => {
     setSyncing(true);
@@ -32,7 +32,7 @@ export default function HomeScreen() {
       if (progressValue >= 1) {
         clearInterval(interval);
         setSyncing(false);
-        setSteps(getRandomSteps());
+        setSteps(Calc.getRandomNumber(0, 10000));
         // Alert.alert("Sincronización exitosa con el dispositivo BLE");
       }
     }, 200);
@@ -43,7 +43,7 @@ export default function HomeScreen() {
   return (
     <ThemedView safe>
       <Header title="Bienvenido" />
-      
+
       <View style={styles.content}>
         <Text style={styles.steps}>{steps} pasos</Text>
 
