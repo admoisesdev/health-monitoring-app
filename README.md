@@ -1,50 +1,90 @@
-# Welcome to your Expo app 👋
+# HealthMonitoring App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicación móvil simple para **simular** una funcionalidad típica de monitoreo y sincronización de datos de salud, como parte de una prueba técnica.
 
-## Get started
+---
 
-1. Install dependencies
+## 🧠 Descripción
 
+1. **Pantalla principal**: Muestra el nombre del usuario, el número de pasos diarios y un botón para "Sincronizar dispositivo" vía BLE.
+2. **Pantalla de recomendaciones**: Muestra una lista de consejos para mejorar la salud del usuario.
+
+---
+
+## 🚀 Tecnologías Utilizadas
+
+- **[React Native](https://reactnative.dev/)**
+- **[Expo](https://expo.dev/)**
+- **[TypeScript](https://www.typescriptlang.org/)**
+- **[React Native Paper](https://callstack.github.io/react-native-paper/)**
+
+---
+
+## 🎯 Funcionalidades
+
+- Simulación de sincronización BLE con un retraso de 2 segundos.
+- Barra de carga durante la sincronización.
+- Actualización del número de pasos tras cada sincronización.
+- Navegación entre pantallas a traves de **_tabs_**.
+- UI limpia, organizada y modularizada.
+
+---
+
+## 📲 Instalación y Ejecución
+
+### Requisitos Previos
+
+- Tener instalado **Node.js** y **npm** o **yarn**
+- Tener instalado **Expo CLI**  
+  Instalar con:
+  ```bash
+  npm install -g expo-cli
+- Tener instalado pnpm (recomendado):
    ```bash
-   npm install
-   ```
+   npm install -g pnpm
 
-2. Start the app
+### Pasos para correr la app
 
-   ```bash
-   npx expo start
-   ```
+#### 1. Clonar el repositorio
+  ```bash
+  git clone https://github.com/admoisesdev/health-monitoring-app.git
+  cd health-monitoring-app
+ ```
 
-In the output, you'll find options to open the app in a
+#### Usando pnpm (recomendado):
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+##### 1. Instalar dependencias:
+```
+pnpm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+##### 2. Iniciar el proyecto con Expo:
+```
+pnpm start
+```
+Luego escanea el código QR con la app Expo Go en tu teléfono para ver la aplicación.
 
-## Learn more
+#### Alternativa con npm:
 
-To learn more about developing your project with Expo, look at the following resources:
+##### 1. Instalar dependencias:
+```
+npm install
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+##### 2. Iniciar el proyecto con Expo:
+```
+npm start
+```
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## 📂 Estructura del Proyecto
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## 📌 Notas
+- Esta aplicación es solo una simulación técnica, no se conecta con un dispositivo BLE real.
+- Puede ser ejecutada tanto en iOS como Android usando Expo Go.
+
+
+
