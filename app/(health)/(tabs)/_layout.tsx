@@ -2,16 +2,20 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { Platform } from "react-native";
 
+import { useColorScheme } from "@/presentation/theme/hooks";
+import { useResponsiveDimensions } from "@/presentation/shared/hooks";
+
 import { HapticTab } from "@/presentation/tabs/components";
 import TabBarBackground from "@/presentation/tabs/components/TabBarBackground";
-import { useColorScheme } from "@/presentation/theme/hooks";
 
 import { Colors } from "@/config/constants";
-
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { getResponsiveValue } = useResponsiveDimensions();
+  const iconSize = getResponsiveValue({ small: 20, medium: 22, large: 24 });
+ 
 
   return (
     <Tabs
@@ -20,6 +24,9 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].primary,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
+        tabBarLabelStyle: {
+          fontSize: getResponsiveValue({ small: 8, medium: 10, large: 14 }),
+        },
         tabBarStyle: Platform.select({
           ios: {
             position: "absolute",
@@ -33,7 +40,7 @@ export default function TabLayout() {
         options={{
           title: "Inicio",
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="home" size={24} color={color} />
+            <FontAwesome name="home" size={iconSize} color={color} />
           ),
         }}
       />
@@ -42,7 +49,7 @@ export default function TabLayout() {
         options={{
           title: "Consejos de salud",
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="heartbeat" size={24} color={color} />
+            <FontAwesome name="heartbeat" size={iconSize} color={color} />
           ),
         }}
       />

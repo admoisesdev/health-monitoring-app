@@ -9,6 +9,7 @@ export type TextType =
   | "h4"
   | "h5"
   | "h6"
+  | "h7"
   | "semi-bold"
   | "bold"
   | "link";
@@ -22,13 +23,14 @@ export const ThemedText = ({ className, variant, ...rest }: Props) => {
   return (
     <Text
       className={[
-        variant === "normal" ? "font-normal" : undefined,
+        variant === "normal" ? "font-normal text-xs" : undefined,
         variant === "h1" ? "text-4xl" : undefined,
         variant === "h2" ? "text-3xl" : undefined,
         variant === "h3" ? "text-2xl" : undefined,
         variant === "h4" ? "text-xl" : undefined,
         variant === "h5" ? "text-lg" : undefined,
         variant === "h6" ? "text-base" : undefined,
+        variant === "h7" ? "text-sm" : undefined,
         variant === "semi-bold" ? "font-semibold" : undefined,
         variant === "bold" ? "font-bold" : undefined,
         variant === "link" ? "font-normal underline" : undefined,

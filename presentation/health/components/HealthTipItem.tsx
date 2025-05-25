@@ -11,7 +11,7 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { useVisibility } from "@/presentation/shared/hooks";
+import { useResponsiveDimensions, useVisibility } from "@/presentation/shared/hooks";
 import { ThemedModal } from "@/presentation/theme/components/ThemedModal";
 
 const IconMap = {
@@ -28,12 +28,22 @@ interface HealthTipItemProps {
 }
 
 export const HealthTipItem = ({ tip }: HealthTipItemProps) => {
-  const secondaryColor = useThemeColor({}, "tertiary");
+  const secondaryColor = useThemeColor({}, "secondary");
+  const tertiaryColor = useThemeColor({}, "tertiary");
+
   const {
     isVisible: isVisibleModal,
     show: showModal,
     hide: hideModal,
   } = useVisibility();
+  const { isSmallScreen } = useResponsiveDimensions();
+
+  const titleVariant = isSmallScreen ? "h7" : "h3";
+  const descriptionVariant = isSmallScreen ? "normal" : "h6";
+  const iconSize = isSmallScreen ? 50 : 60;
+  const linkButtonText = isSmallScreen ? "text-xs" : "text-base";
+  const titleModal = isSmallScreen ? "h5" : "h2";
+  const buttonCloseModal = isSmallScreen ? "text-xs" : "text-base";
 
   const IconComponent = IconMap[tip.icon.library as IconLibrary];
 
@@ -43,24 +53,29 @@ export const HealthTipItem = ({ tip }: HealthTipItemProps) => {
         <View className="justify-center items-center w-20 h-3/4">
           <IconComponent
             name={tip.icon.name}
-            size={60}
-            color={secondaryColor}
+            size={iconSize}
+            color={tertiaryColor}
           />
         </View>
 
         <View className="flex-1 justify-center h-full my-2">
-          <ThemedText variant="h3" className="text-slate-700">
+          <ThemedText variant={titleVariant} className="text-slate-700">
             {tip.title}
           </ThemedText>
           <ThemedText
-            variant="normal"
+            variant={descriptionVariant}
             className="text-slate-500 w-full"
             numberOfLines={2}
           >
             {tip.description}
           </ThemedText>
           <ThemedButton onPress={showModal} className="self-end px-0 py-1">
-            <ThemedText className="text-slate-600">Ver más</ThemedText>
+            <ThemedText
+              variant="link"
+              className={`text-slate-600 ${linkButtonText}`}
+            >
+              Ver más
+            </ThemedText>
           </ThemedButton>
         </View>
       </View>
@@ -79,24 +94,27 @@ export const HealthTipItem = ({ tip }: HealthTipItemProps) => {
             />
           </View>
 
-          <ThemedText variant="h2" className="text-slate-700 text-center mb-4">
+          <ThemedText
+            variant={titleModal}
+            className="text-slate-700 text-center mb-4"
+          >
             {tip.title}
           </ThemedText>
 
           <ThemedText
-            variant="normal"
+            variant={descriptionVariant}
             className="text-slate-600 text-center mb-6"
           >
             {tip.description}
           </ThemedText>
 
-          
-
           <ThemedButton
             onPress={hideModal}
-            className="bg-slate-700 mt-6 py-2 px-6 rounded-full"
+            className="bg-slate-700 mt-6 py-2 px-6 rounded-full w-2/4"
           >
-            <ThemedText className="text-white">Cerrar</ThemedText>
+            <ThemedText className={`text-white ${buttonCloseModal}`}>
+              Cerrar
+            </ThemedText>
           </ThemedButton>
         </View>
       </ThemedModal>

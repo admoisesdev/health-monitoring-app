@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, FlatList, View } from "react-native";
 
+import { useResponsiveDimensions } from "@/presentation/shared/hooks";
 import { useHealthTips } from "@/presentation/health/hooks";
 
 import { ThemedCard, ThemedText, ThemedView } from "@/presentation/theme/components";
@@ -9,7 +10,11 @@ import { HealthTipItem } from "@/presentation/health/components";
 
 
 export default function HealthTipsScreen() {
-  const {healthTips} = useHealthTips();
+  const { healthTips } = useHealthTips();
+  const { isSmallScreen } = useResponsiveDimensions();
+
+  const headerTitle = isSmallScreen ? "h4" : "h2";
+  const headerSubtitle = isSmallScreen ? "normal" : "h6";
 
   return (
     <ThemedView safe margin>
@@ -23,11 +28,15 @@ export default function HealthTipsScreen() {
           <FlatList
             ListHeaderComponent={() => (
               <View>
-                <ThemedText variant="h2" className="text-slate-800 mb-1">
+                <ThemedText
+                  variant={headerTitle}
+                  className="text-slate-800 mb-1"
+                >
                   Consejos de salud
                 </ThemedText>
-                <ThemedText className="text-slate-500">
-                  Aquí tienes algunos consejos para mejorar tu salud y bienestar:
+                <ThemedText variant={headerSubtitle} className="text-slate-500">
+                  Aquí tienes algunos consejos para mejorar tu salud y
+                  bienestar:
                 </ThemedText>
               </View>
             )}

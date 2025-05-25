@@ -13,6 +13,7 @@ import {
 import { Formatter } from "@/config/helpers";
 
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { useResponsiveDimensions } from "@/presentation/shared/hooks";
 
 export const StepsCard = () => {
   const primaryColor = useThemeColor({}, "primary");
@@ -25,6 +26,17 @@ export const StepsCard = () => {
     bounceTranslate,
     isAlternateIcon,
   } = useSteps();
+  const {  getResponsiveValue } = useResponsiveDimensions();
+  const buttonWidth = getResponsiveValue({
+    small: "w-5/6",
+    medium: "w-full",
+    large: "w-4/6",
+  });
+  const textButtonClass = getResponsiveValue({
+    small: "text-xs",
+    medium: "text-sm",
+    large: "text-base",
+  });
 
   return (
     <>
@@ -60,7 +72,8 @@ export const StepsCard = () => {
 
             <ThemedButton
               variant="rounded"
-              className="bg-slate-800 w-4/6"
+              className={`bg-slate-800 ${buttonWidth}`}
+              textClassName={textButtonClass}
               disabled={isSyncing || isVisibleBanner}
               onPress={handleSync}
               text="Sincronizar dispositivo"

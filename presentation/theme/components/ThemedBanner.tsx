@@ -4,6 +4,7 @@ import { Banner, Icon } from "react-native-paper";
 
 import { ThemedText } from "./ThemedText";
 import { useThemeColor } from "../hooks";
+import { useResponsiveDimensions } from "@/presentation/shared/hooks";
 
 interface ThemedBannerProps {
   text: string;
@@ -19,17 +20,29 @@ export const ThemedBanner = ({
   isVisible,
   hide,
   iconSource = "check-circle",
-  iconSize = 54,
+  iconSize,
   iconColor,
 }: ThemedBannerProps) => {
   const succesColor = useThemeColor({}, "success");
   const secondaryColor = useThemeColor({}, "secondary");
+  const { isSmallScreen, getResponsiveValue } = useResponsiveDimensions();
+
+  const responsiveIconSize = getResponsiveValue({
+    small: 36,
+    medium: 44,
+    large: 54,
+  });
+
+  const finalIconSize = iconSize ?? responsiveIconSize;
+  const textVariant = isSmallScreen ? "h7" : "h5";
+  const buttonFontSize = getResponsiveValue({ small: 14, medium: 15, large: 17 });
 
   return (
     <Banner
       style={{
         borderRadius: 8,
         backgroundColor: "white",
+        padding: isSmallScreen ? 8 : 12,
       }}
       visible={isVisible}
       actions={[
@@ -42,7 +55,7 @@ export const ThemedBanner = ({
         <View className="flex-1 items-center justify-center">
           <Icon
             source={iconSource}
-            size={iconSize ?? size}
+            size={finalIconSize}
             color={iconColor ?? succesColor}
           />
         </View>
@@ -53,13 +66,13 @@ export const ThemedBanner = ({
         },
         fonts: {
           labelLarge: {
-            fontSize: 17,
+            fontSize: buttonFontSize,
             fontWeight: "700",
           },
         },
       }}
     >
-      <ThemedText variant="h5" className="text-slate-700">
+      <ThemedText variant={textVariant} className="text-slate-700">
         {text}
       </ThemedText>
     </Banner>
