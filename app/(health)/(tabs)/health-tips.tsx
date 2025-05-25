@@ -1,0 +1,54 @@
+import React from "react";
+import { StyleSheet, FlatList, View } from "react-native";
+
+import { useHealthTips } from "@/presentation/health/hooks";
+
+import { ThemedCard, ThemedText, ThemedView } from "@/presentation/theme/components";
+import { Header } from "@/presentation/shared/components";
+import { HealthTipItem } from "@/presentation/health/components";
+
+
+export default function HealthTipsScreen() {
+  const {healthTips} = useHealthTips();
+
+  return (
+    <ThemedView safe>
+      <Header title="Bienvenido" />
+
+      <View className="flex-1 justify-center w-[95%] mx-auto my-4">
+        <ThemedCard
+          mode="contained"
+          style={{ paddingVertical: 10, paddingHorizontal: 5 }}
+        >
+          <FlatList
+            ListHeaderComponent={() => (
+              <View className="px-4">
+                <ThemedText
+                  variant="h2"
+                  className="text-slate-800 uppercase mb-1"
+                >
+                  Consejos de salud
+                </ThemedText>
+                <ThemedText className="text-slate-500">
+                  Aquí tienes algunos consejos para mejorar tu salud.
+                </ThemedText>
+              </View>
+            )}
+            contentContainerStyle={styles.tipsList}
+            data={healthTips}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => <HealthTipItem tip={item} />}
+            showsVerticalScrollIndicator={false}
+          />
+        </ThemedCard>
+      </View>
+    </ThemedView>
+  );
+}
+
+const styles = StyleSheet.create({
+  tipsList: {
+    padding: 20,
+    gap: 20,
+  },
+});

@@ -51,7 +51,7 @@ export default function RootLayout() {
               },
             }}
           >
-            <Stack.Screen name="(tabs)" />
+            <Stack.Screen name="(health)/(tabs)" />
             <Stack.Screen name="+not-found" />
           </Stack>
         </ThemeProvider>

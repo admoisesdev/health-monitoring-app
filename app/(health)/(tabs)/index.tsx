@@ -1,9 +1,8 @@
 import { View } from "react-native";
 
-import { Header } from "@/presentation/shared/components";
 import { ThemedView } from "@/presentation/theme/components";
+import { Header } from "@/presentation/shared/components";
 import { StepsCard } from "@/presentation/steps/components";
-
 
 export default function HomeScreen() {
   return (
