@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Calc, Timer } from "@/config/helpers";
 import { useVisibility } from "@/presentation/shared/hooks";
 
+
 export const useSteps = () => {
   const {
     isVisible: isVisibleBanner,

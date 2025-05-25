@@ -20,40 +20,42 @@ export const StepsCard = () => {
   const {steps,isSyncing,handleSync,isVisibleBanner,hideBanner} = useSteps();
   
   return (
-    <View className="flex-1 justify-center gap-4">
-      <ThemedBanner
-        text="Sincronización exitosa con el dispositivo BLE"
-        isVisible={isVisibleBanner}
-        hide={hideBanner}
-      />
+    <>
+      <View className="flex-1 justify-center">
+        <ThemedBanner
+          text="Sincronización exitosa con el dispositivo BLE"
+          isVisible={isVisibleBanner}
+          hide={hideBanner}
+        />
 
-      <ThemedCard mode="contained">
-        <View className="justify-center items-center gap-4">
-          <FontAwesome5 name="walking" size={60} color={primaryColor} />
+        <ThemedCard mode="contained" style={{ marginTop: 20 }}>
+          <View className="justify-center items-center gap-4">
+            <FontAwesome5 name="walking" size={60} color={primaryColor} />
 
-          <View className="flex-col justify-center items-center">
-            <ThemedText variant="h1" className="font-bold text-slate-700">
-              {Formatter.numberWithCommasAndDots(steps)}
-            </ThemedText>
-            <ThemedText variant="h4" className="font-semibold text-slate-500">
-              Pasos
-            </ThemedText>
+            <View className="flex-col justify-center items-center">
+              <ThemedText variant="h1" className="font-bold text-slate-700">
+                {Formatter.numberWithCommasAndDots(steps)}
+              </ThemedText>
+              <ThemedText variant="h4" className="font-semibold text-slate-500">
+                Pasos
+              </ThemedText>
+            </View>
+
+            <ThemedButton
+              variant="rounded"
+              className="bg-slate-800 w-4/6"
+              disabled={isSyncing || isVisibleBanner}
+              onPress={handleSync}
+              text="Sincronizar dispositivo"
+              iconName="sync"
+              iconColor="white"
+              iconSize={24}
+              isLoading={isSyncing}
+              loadingText="Sincronizando..."
+            />
           </View>
-
-          <ThemedButton
-            variant="rounded"
-            className="bg-slate-800 w-4/6"
-            disabled={isSyncing}
-            onPress={handleSync}
-            text="Sincronizar dispositivo"
-            iconName="sync"
-            iconColor="white"
-            iconSize={24}
-            isLoading={isSyncing}
-            loadingText="Sincronizando..."
-          />
-        </View>
-      </ThemedCard>
-    </View>
+        </ThemedCard>
+      </View>
+    </>
   );
 };

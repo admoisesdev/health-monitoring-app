@@ -6,10 +6,10 @@ import { StepsCard } from "@/presentation/steps/components";
 
 export default function HomeScreen() {
   return (
-    <ThemedView safe>
+    <ThemedView safe margin>
       <Header title="Bienvenido" />
 
-      <View className="flex-1 justify-center w-[95%] mx-auto">
+      <View className="flex-1 justify-center">
         <StepsCard />
       </View>
     </ThemedView>

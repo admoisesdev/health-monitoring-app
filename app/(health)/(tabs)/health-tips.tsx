@@ -12,25 +12,22 @@ export default function HealthTipsScreen() {
   const {healthTips} = useHealthTips();
 
   return (
-    <ThemedView safe>
+    <ThemedView safe margin>
       <Header title="Bienvenido" />
 
-      <View className="flex-1 justify-center w-[95%] mx-auto my-4">
+      <View className="flex-1 justify-center my-5">
         <ThemedCard
           mode="contained"
-          style={{ paddingVertical: 10, paddingHorizontal: 5 }}
+          style={{ paddingVertical: 5, paddingHorizontal: 0 }}
         >
           <FlatList
             ListHeaderComponent={() => (
-              <View className="px-4">
-                <ThemedText
-                  variant="h2"
-                  className="text-slate-800 uppercase mb-1"
-                >
+              <View>
+                <ThemedText variant="h2" className="text-slate-800 mb-1">
                   Consejos de salud
                 </ThemedText>
                 <ThemedText className="text-slate-500">
-                  Aquí tienes algunos consejos para mejorar tu salud.
+                  Aquí tienes algunos consejos para mejorar tu salud y bienestar:
                 </ThemedText>
               </View>
             )}

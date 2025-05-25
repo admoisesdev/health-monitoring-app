@@ -8,12 +8,11 @@ interface HeaderProps {
   title: string;
 }
 
-
 export const Header = ({ title }: HeaderProps) => {
   const { profile } = useProfile();
 
   return (
-    <View className="flex-row items-center justify-between p-4 bg-white shadow-md">
+    <View className="flex-row items-center justify-between p-4 mt-3 bg-white shadow-md rounded-lg">
       <View className="flex-col ">
         <ThemedText variant="h3" className="text-slate-800">
           {title}, <ThemedText variant="semi-bold">{profile.name}</ThemedText>
@@ -27,4 +26,3 @@ export const Header = ({ title }: HeaderProps) => {
     </View>
   );
 };
-

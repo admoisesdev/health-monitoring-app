@@ -59,7 +59,7 @@ export const ThemedBanner = ({
         },
       }}
     >
-      <ThemedText variant="h5" className="">
+      <ThemedText variant="h5" className="text-slate-700">
         {text}
       </ThemedText>
     </Banner>

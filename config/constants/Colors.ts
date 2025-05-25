@@ -7,7 +7,7 @@ export const Colors = {
 
     success: "#52d49b",
 
-    background: "#e2e8f0",
+    background: "#F5F5F5",
     text: "#000000",
 
     lightBlue: "#3b82f6",

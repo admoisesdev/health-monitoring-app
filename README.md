@@ -17,6 +17,7 @@ Aplicación móvil simple para **simular** una funcionalidad típica de monitore
 - **[Expo](https://expo.dev/)**
 - **[TypeScript](https://www.typescriptlang.org/)**
 - **[React Native Paper](https://callstack.github.io/react-native-paper/)**
+- **[Nativewind](https://www.nativewind.dev/)**
 
 ---
 
