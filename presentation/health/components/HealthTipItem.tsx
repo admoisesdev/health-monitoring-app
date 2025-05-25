@@ -40,7 +40,7 @@ export const HealthTipItem = ({ tip }: HealthTipItemProps) => {
   return (
     <>
       <View className="flex-row items-start gap-3 h-[120px] border-b border-slate-200 pb-4">
-        <View className="justify-center items-center w-20 h-full">
+        <View className="justify-center items-center w-20 h-3/4">
           <IconComponent
             name={tip.icon.name}
             size={60}
@@ -48,7 +48,7 @@ export const HealthTipItem = ({ tip }: HealthTipItemProps) => {
           />
         </View>
 
-        <View className="flex-1 justify-center h-full my-4">
+        <View className="flex-1 justify-center h-full my-2">
           <ThemedText variant="h3" className="text-slate-700">
             {tip.title}
           </ThemedText>

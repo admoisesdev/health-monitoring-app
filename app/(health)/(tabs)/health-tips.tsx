@@ -45,7 +45,8 @@ export default function HealthTipsScreen() {
 
 const styles = StyleSheet.create({
   tipsList: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     gap: 20,
   },
 });

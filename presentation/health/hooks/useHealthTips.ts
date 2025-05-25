@@ -54,7 +54,7 @@ const initialHealthTips = [
 ];
 
 export const useHealthTips = () => {
-  const [healthTips] = useState<HealthTipResponse[]>(initialHealthTips);
+  const [healthTips] = useState<HealthTipResponse[]>(initialHealthTips.slice(0, 5));
 
 
   return {
