@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
+import { useAnimation, useVisibility } from "@/presentation/shared/hooks";
 import { Calc, Timer } from "@/config/helpers";
-import { useVisibility } from "@/presentation/shared/hooks";
-
 
 export const useSteps = () => {
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [steps, setSteps] = useState(Calc.getRandomNumber(0, 10000));
   const {
     isVisible: isVisibleBanner,
     show: showBanner,
     hide: hideBanner,
   } = useVisibility();
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [steps, setSteps] = useState(Calc.getRandomNumber(0, 10000));
+  const { 
+    isAlternateIcon, 
+    startWalkingAnimation, 
+    getBounceTranslate,
+  } = useAnimation();
+
+
+  useEffect(() => {
+    const { clearInterval, stopAnimation } = startWalkingAnimation({ isActive: isSyncing});
+
+    return () => {
+      clearInterval();
+      stopAnimation();
+    };
+  }, [isSyncing, startWalkingAnimation]);
 
   const handleSync = async () => {
     setIsSyncing(true);
@@ -34,5 +48,7 @@ export const useSteps = () => {
     handleSync,
     isVisibleBanner,
     hideBanner,
+    isAlternateIcon,
+    bounceTranslate: getBounceTranslate,
   };
 };

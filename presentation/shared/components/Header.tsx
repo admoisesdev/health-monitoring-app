@@ -22,7 +22,7 @@ export const Header = ({ title }: HeaderProps) => {
         </ThemedText>
       </View>
 
-      <ThemedAvatar label={profile.name} size={50} />
+      <ThemedAvatar label={profile.name} size={60} />
     </View>
   );
 };
