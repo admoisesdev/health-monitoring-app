@@ -16,4 +16,14 @@ export class Formatter {
       })
       .join(" ");
   }
+
+  static numberWithCommasAndDots(number: number | string): string {
+    if (!number) return "0";
+
+    if (typeof number === "string") {
+      number = parseFloat(number);
+    }
+    
+    return number.toLocaleString("es-ES");
+  }
 }

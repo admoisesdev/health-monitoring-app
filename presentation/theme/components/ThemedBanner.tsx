@@ -28,7 +28,6 @@ export const ThemedBanner = ({
   return (
     <Banner
       style={{
-        marginHorizontal: 12,
         borderRadius: 8,
         backgroundColor: "white",
       }}

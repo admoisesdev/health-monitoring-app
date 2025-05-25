@@ -40,7 +40,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="health-tips"
         options={{
-          title: "Tips salud",
+          title: "Consejos de salud",
           tabBarIcon: ({ color }) => (
             <FontAwesome name="heartbeat" size={24} color={color} />
           ),

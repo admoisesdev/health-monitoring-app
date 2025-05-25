@@ -14,6 +14,7 @@ interface Props extends PressableProps {
   iconName?: string;
   iconSize?: number;
   isLoading?: boolean;
+  loadingText?: string;
   text?: string;
   textClassName?: string;
   variant?: "outline" | "default" | "rounded" | "icon";
@@ -26,6 +27,7 @@ export const ThemedButton = ({
   iconName,
   iconSize = 24,
   isLoading,
+  loadingText = "Cargando...",
   onPress,
   text,
   textClassName,
@@ -61,14 +63,23 @@ export const ThemedButton = ({
             <ThemedText
               className={["text-white text-center", textClassName].join(" ")}
             >
-              Cargando...
+             {loadingText}
             </ThemedText>
           </View>
         ) : (
           children
         )
+      ) : isLoading ? (
+        <View className="flex-row justify-center items-center gap-2">
+          <ActivityIndicator size="small" color="white" />
+          <ThemedText
+            className={["text-white text-center", textClassName].join(" ")}
+          >
+           {loadingText}
+          </ThemedText>
+        </View>
       ) : (
-        <>
+        <View className="flex-row justify-center items-center gap-2">
           {iconName && (
             <Icon source={iconName} size={iconSize} color={iconColor} />
           )}
@@ -77,7 +88,7 @@ export const ThemedButton = ({
           >
             {text}
           </ThemedText>
-        </>
+        </View>
       )}
     </Pressable>
   );
