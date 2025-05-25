@@ -42,7 +42,7 @@ export const StepsCard = () => {
     <>
       <View className="flex-1 justify-center">
         <ThemedBanner
-          text="Sincronización exitosa con el dispositivo BLE"
+          text="Sincronización exitosa con el dispositivo BLE."
           isVisible={isVisibleBanner}
           hide={hideBanner}
         />
