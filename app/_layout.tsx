@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 
 import { useColorScheme, useThemeColor } from "@/presentation/theme/hooks";
@@ -54,6 +55,7 @@ export default function RootLayout() {
             <Stack.Screen name="(health)/(tabs)" />
             <Stack.Screen name="+not-found" />
           </Stack>
+          <StatusBar style="auto" />
         </ThemeProvider>
       </PaperProvider>
     </GestureHandlerRootView>

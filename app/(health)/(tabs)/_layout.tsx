@@ -13,9 +13,10 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const { getResponsiveValue } = useResponsiveDimensions();
+  const { isSmallScreen, getResponsiveValue } = useResponsiveDimensions();
+
   const iconSize = getResponsiveValue({ small: 20, medium: 22, large: 24 });
- 
+
 
   return (
     <Tabs
@@ -26,6 +27,7 @@ export default function TabLayout() {
         tabBarBackground: TabBarBackground,
         tabBarLabelStyle: {
           fontSize: getResponsiveValue({ small: 8, medium: 10, large: 14 }),
+          paddingBottom: isSmallScreen ? 2 : 4,
         },
         tabBarStyle: Platform.select({
           ios: {

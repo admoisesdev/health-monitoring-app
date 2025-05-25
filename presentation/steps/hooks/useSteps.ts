@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { useAnimation, useVisibility } from "@/presentation/shared/hooks";
 import { Calc, Timer } from "@/config/helpers";
 
 export const useSteps = () => {
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [steps, setSteps] = useState(Calc.getRandomNumber(0, 10000));
+  const [isSyncing, setIsSyncing] = useState<boolean>(false);
+  const [steps, setSteps] = useState<number>(Calc.getRandomNumber(0, 10000));
+  const bannerTimerRef = useRef<number | null>(null);
+
   const {
     isVisible: isVisibleBanner,
     show: showBanner,
@@ -24,21 +26,37 @@ export const useSteps = () => {
     return () => {
       clearInterval();
       stopAnimation();
+      clearBannerTimer();
     };
   }, [isSyncing, startWalkingAnimation]);
+
+  const clearBannerTimer = () => {
+    if (bannerTimerRef.current) {
+      clearTimeout(bannerTimerRef.current);
+      bannerTimerRef.current = null;
+    }
+  };
+
+  const handleHideBanner = () => {
+    clearBannerTimer();
+    hideBanner();
+  };
 
   const handleSync = async () => {
     setIsSyncing(true);
 
-    setSteps(Calc.getRandomNumber(0, 10000));
+    clearBannerTimer();
+
     await Timer.sleep();
+    setSteps(Calc.getRandomNumber(0, 10000));
 
     setIsSyncing(false);
 
     showBanner();
 
-    setTimeout(() => {
+    bannerTimerRef.current = setTimeout(() => {
       hideBanner();
+      bannerTimerRef.current = null;
     }, 5000);
   };
 
@@ -47,7 +65,7 @@ export const useSteps = () => {
     steps,
     handleSync,
     isVisibleBanner,
-    hideBanner,
+    hideBanner: handleHideBanner,
     isAlternateIcon,
     bounceTranslate: getBounceTranslate,
   };

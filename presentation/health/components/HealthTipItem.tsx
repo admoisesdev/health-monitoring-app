@@ -1,8 +1,9 @@
 import { View } from "react-native";
+
 import { useThemeColor } from "@/presentation/theme/hooks";
+import { useResponsiveDimensions, useVisibility } from "@/presentation/shared/hooks";
 
-import { ThemedButton, ThemedText } from "@/presentation/theme/components";
-
+import { ThemedButton, ThemedText,ThemedModal } from "@/presentation/theme/components";
 import { HealthTipResponse } from "@/infrastructure/interfaces";
 
 import {
@@ -11,8 +12,6 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { useResponsiveDimensions, useVisibility } from "@/presentation/shared/hooks";
-import { ThemedModal } from "@/presentation/theme/components/ThemedModal";
 
 const IconMap = {
   FontAwesome,
