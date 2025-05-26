@@ -29,6 +29,7 @@
       "!config/api/*.{ts,tsx}",
       "!config/**/index.ts",
       "!core/**/index.ts",
+      "presentation/**tabs/*.{ts,tsx}",
       "!presentation/**/*.web.ts",
       "!presentation/**/index.ts"
     ],
