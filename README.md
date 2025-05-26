@@ -82,14 +82,19 @@ npm start
 ---
 
 ### Paso para correr todas las pruebas unitarias (unit testing):
-#### Con pnpm:
+##### Con pnpm:
 ```
 pnpm run test
 ```
 
-#### Con npm:
+##### Con npm:
 ```
 npm run test
+```
+
+#### Para ver el coverage (cobertura de las pruebas):
+```
+pnpm run coverage
 ```
 
 ---

@@ -26,8 +26,7 @@ export default function TabLayout() {
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarLabelStyle: {
-          fontSize: getResponsiveValue({ small: 8, medium: 10, large: 14 }),
-          paddingBottom: isSmallScreen ? 2 : 4,
+          fontSize: getResponsiveValue({ small: 8, medium: 10, large: 12 }),
         },
         tabBarStyle: Platform.select({
           ios: {

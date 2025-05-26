@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import {
   Dimensions,
   Modal as NativeModal,
@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { Modal, Portal } from "react-native-paper";
 
+import { useAnimation } from "@/presentation/shared/hooks";
 import { ThemedButton } from "./ThemedButton";
 
 interface ThemedModalContentProps extends ModalProps {
@@ -38,25 +39,15 @@ export const ThemedModal = ({
   className,
   ...rest
 }: ThemedModalProps) => {
-  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const {animatedOpacity,fadeIn,fadeOut} = useAnimation();
 
   useEffect(() => {
     if (isVisible) {
-      // Animar aparición
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
+      fadeIn({});
     } else {
-      // Animar desaparición
-      Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
+      fadeOut({});
     }
-  }, [isVisible, fadeAnim]);
+  }, [isVisible, fadeIn, fadeOut]);
 
   return isNativeModal ? (
     <NativeModal
@@ -107,7 +98,9 @@ export const ThemedModal = ({
           <View style={styles.overlay} />
         </TouchableWithoutFeedback>
 
-        <Animated.View style={[styles.modalContent, { opacity: fadeAnim }]}>
+        <Animated.View
+          style={[styles.modalContent, { opacity: animatedOpacity }]}
+        >
           <ThemedButton
             style={styles.closeButton}
             onPress={hideModal}

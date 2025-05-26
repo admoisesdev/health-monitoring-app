@@ -82,7 +82,7 @@ export const HealthTipItem = ({ tip }: HealthTipItemProps) => {
       <ThemedModal
         isVisible={isVisibleModal}
         hideModal={hideModal}
-        isNativeModal
+        // isNativeModal
       >
         <View className="items-center">
           <View className="mb-6 items-center">

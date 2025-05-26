@@ -15,7 +15,38 @@ interface WalkingAnimationParams {
 export const useAnimation = () => {
   const [isAlternateIcon, setIsAlternateIcon] = useState(false);
 
+  const animatedOpacity = useRef(new Animated.Value(0)).current;
   const bounceAnimation = useRef(new Animated.Value(0)).current;
+
+  const fadeIn = ({
+    duration = 300,
+    toValue = 1,
+    useNativeDriver = true,
+    easing = Easing.linear,
+    callback = () => {},
+  }) => {
+    Animated.timing(animatedOpacity, {
+      toValue,
+      duration,
+      useNativeDriver,
+      easing,
+    }).start(callback);
+  };
+
+  const fadeOut = ({
+    duration = 300,
+    toValue = 0,
+    useNativeDriver = true,
+    easing = Easing.ease,
+    callback = () => {},
+  }) => {
+    Animated.timing(animatedOpacity, {
+      toValue,
+      duration,
+      useNativeDriver,
+      easing,
+    }).start(callback);
+  };
 
   const getBounceTranslate = ({
     magnitude = 5,
@@ -92,9 +123,12 @@ export const useAnimation = () => {
   };
 
   return {
+    animatedOpacity,
+    fadeIn,
+    fadeOut,
+
     isAlternateIcon,
     bounceAnimation,
-
     startWalkingAnimation,
     getBounceTranslate,
   };
