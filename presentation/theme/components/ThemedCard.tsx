@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Dimensions, StyleProp, ViewStyle } from "react-native";
+import { StyleSheet, StyleProp, ViewStyle } from "react-native";
 import { Card } from "react-native-paper";
 
 
@@ -15,7 +15,7 @@ export const ThemedCard = ({
   style,
 }: ThemedCardProps) => {
   return (
-    <Card style={[styles.card, style]} mode={mode}>
+    <Card style={[styles.card, style]} mode={mode} testID="card-container">
       {children}
     </Card>
   );

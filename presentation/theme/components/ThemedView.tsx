@@ -43,6 +43,7 @@ export const ThemedView = ({
         keyboardShouldPersistTaps="handled"
       >
         <View
+          testID="view-container"
           style={[
             {
               flex: 1,
@@ -61,6 +62,7 @@ export const ThemedView = ({
     </KeyboardAvoidingView>
   ) : (
     <View
+      testID="view-container"
       style={[
         {
           flex: 1,
