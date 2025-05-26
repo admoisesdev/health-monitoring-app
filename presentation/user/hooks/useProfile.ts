@@ -1,7 +1,7 @@
 import {  useState } from "react";
 import { UserResponse } from "@/infrastructure/interfaces";
 
-const initialProfile = {
+export const initialProfile = {
   name: "John Doe",
   email: "johndoe@gmail.com",
   age: 30,

@@ -1,7 +1,7 @@
 import {  useState } from "react";
 import { HealthTipResponse } from "@/infrastructure/interfaces";
 
-const initialHealthTips = [
+export const initialHealthTips = [
   {
     id: 1,
     title: "Mantente hidratado",
