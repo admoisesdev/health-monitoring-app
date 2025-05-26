@@ -38,7 +38,6 @@ yarn-error.*
 
 app-example
 
-.env
 
 service-account-file.json
 
